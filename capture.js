@@ -32,8 +32,8 @@ async function setupAndProcess(array) {
   browser = await puppeteer.launch({ headless: true });
   page = await browser.newPage();
   for (const url of array) {
-    let re = /\//gi;
-    let filename = url.split("://")[1].replace(re,".");
+    let re = /\/|\./gi;
+    let filename = url.split("://")[1].replace(re,"-");
     let path = `${conf.path}/${filename}.png`
     await snap(url, path);
   }
