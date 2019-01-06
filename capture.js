@@ -20,7 +20,7 @@ async function snap(url, file) {
     console.log('snapping :', url);
     let browser = await puppeteer.launch({ headless: true });
     let page = await browser.newPage();
-    await page.setViewport({ width: 800, height: 400 });
+    await page.setViewport({ width: 1024, height: 512 });
     await page.goto(url);
     await page.screenshot({ path: file, type: 'png' });
     await browser.close();
