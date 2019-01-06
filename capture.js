@@ -7,7 +7,7 @@ var browser, page;
 */
 const conf = {
   path: './dist/card',
-  index: 'https://social-images--hawksworx.netlify.com/card-urls.json'
+  index: 'https://www.hawksworx.com/card-urls.json'
 }
 
 
