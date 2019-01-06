@@ -1,0 +1,9 @@
+{
+  "name": "screenshooter",
+  "version": "1.0.0",
+  "main": "capture.js",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^1.11.0"
+  }
+}
