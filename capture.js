@@ -1,20 +1,19 @@
+const axios     = require('axios');
 const puppeteer = require('puppeteer');
 
 
-// temp... for dev time.
-const urls = [
-  'https://www.hawksworx.com/blog',
-  'https://www.hawksworx.com/about',
-  'https://www.hawksworx.com/speaking',
-  'https://www.hawksworx.com'
-];
-
-
+/*
+* Global config variables
+*/
 const conf = {
   path: './dist/card',
-  index: 'https://www.hawksworx.com/card-urls.json'
+  index: 'https://social-images--hawksworx.netlify.com/card-urls.json'
 }
 
+
+/*
+* Take a snapshot with puppeteer
+*/
 async function snap(url, file) {
   try {
     console.log('snapping :', url);
@@ -31,9 +30,19 @@ async function snap(url, file) {
   }
 }
 
-urls.forEach( (url) => {
-  let filename = url.split("://")[1].replace("/",".");
-  let path = `${conf.path}/${filename}.png`
-  snap(url, path);
-});
 
+/*
+* Discover the list of urls for which we need snapshots
+*/
+axios.get(conf.index)
+  .then((response) => {
+    response.data.cards.forEach( (url) => {
+      let re = /\//gi;
+      let filename = url.split("://")[1].replace(re,".");
+      let path = `${conf.path}/${filename}.png`
+      snap(url, path);
+    });
+  })
+  .catch((error) => {
+    console.log('error :', error)
+  });
