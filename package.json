@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "capture.js",
   "license": "MIT",
+  "scripts": {
+    "build": "node capture.js"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "puppeteer": "^1.11.0"
