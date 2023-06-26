@@ -1,6 +1,9 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 const axios     = require('axios');
 const puppeteer = require('puppeteer');
 var browser, page;
+
 
 /*
 * Global config variables
